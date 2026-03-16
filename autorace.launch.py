@@ -65,18 +65,24 @@ def generate_launch_description():
                     package='ros_gz_bridge',
                     executable='parameter_bridge',
                     arguments=[
-                        # 攝影機影像 (雙向)
-                        '/camera/image_raw@sensor_msgs/msg/Image@gz.msgs.Image',
-                        # 攝影機資訊 (雙向)
-                        '/camera/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo',
-                        # 雷達掃描 (雙向)
-                        '/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan',
-                        # 速度控制指令 (雙向)
-                        '/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist',
-                        # 里程計 (雙向)
-                        '/odom@nav_msgs/msg/Odometry@gz.msgs.Odometry',
-                        # 座標轉換 (雙向)
-                        '/tf@tf2_msgs/msg/TFMessage@gz.msgs.Pose_V'
+                        # 模擬時鐘 (必備)
+                        '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
+                        # 攝影機影像
+                        '/camera/image_raw@sensor_msgs/msg/Image[gz.msgs.Image',
+                        # 攝影機資訊
+                        '/camera/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo',
+                        # 雷達掃描
+                        '/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan',
+                        # 速度控制指令
+                        '/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist',
+                        # 里程計
+                        '/odom@nav_msgs/msg/Odometry[gz.msgs.Odometry',
+                        # 關節狀態
+                        '/joint_states@sensor_msgs/msg/JointState[gz.msgs.Model',
+                        # IMU 感測器
+                        '/imu@sensor_msgs/msg/Imu[gz.msgs.IMU',
+                        # 座標轉換
+                        '/tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V'
                     ],
                     output='screen'
                 ),
