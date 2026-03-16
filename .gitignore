@@ -1,0 +1,11 @@
+build/
+install/
+log/
+__pycache__/
+*.pyc
+.vscode/
+*.swp
+autorace_ai_ws/build/
+autorace_ai_ws/install/
+autorace_ai_ws/log/
+.aider*
