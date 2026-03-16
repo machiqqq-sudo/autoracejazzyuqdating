@@ -15,20 +15,16 @@ def generate_launch_description():
     manager_path = os.path.join(current_dir, 'autorace_manager.py')
 
     # 讀取 SDF 檔案內容以供 robot_state_publisher 使用
+    # 並將 model:// 替換為絕對路徑，確保 RViz 能正確顯示模型
     with open(sdf_path, 'r') as f:
-        robot_desc = f.read()
-
-    # 動態將當前目錄下的 models 資料夾加入 GZ_SIM_RESOURCE_PATH 中
-    if 'GZ_SIM_RESOURCE_PATH' in os.environ:
-        os.environ['GZ_SIM_RESOURCE_PATH'] += os.pathsep + models_path
-    else:
-        os.environ['GZ_SIM_RESOURCE_PATH'] = models_path
+        robot_desc = f.read().replace('model://', models_path + '/')
 
     return LaunchDescription([
      
         # 1. 環境變數設定
        
         # 告訴 Gazebo：不要去官方找，來我這裡找修好的 3D 模型！
+        SetEnvironmentVariable('GZ_SIM_RESOURCE_PATH', models_path),
         SetEnvironmentVariable('GZ_IP', '127.0.0.1'),
         
         # [for henry] Nvidia RTX 顯卡優化 (預設註解)
