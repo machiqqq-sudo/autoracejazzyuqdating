@@ -32,7 +32,7 @@
         <pose>-0.032 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>models/turtlebot3_common/meshes/bases/burger_base.stl</uri>
+            <uri>model://turtlebot3_common/meshes/bases/burger_base.stl</uri>
             <scale>0.001 0.001 0.001</scale>
           </mesh>
         </geometry>
@@ -141,7 +141,7 @@
         <pose>-0.032 0 0.171 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>models/turtlebot3_common/meshes/sensors/lds.stl</uri>
+            <uri>model://turtlebot3_common/meshes/sensors/lds.stl</uri>
             <scale>0.001 0.001 0.001</scale>
           </mesh>
         </geometry>
@@ -231,7 +231,7 @@
         <pose>0 0.08 0.023 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>models/turtlebot3_common/meshes/wheels/left_tire.stl</uri>
+            <uri>model://turtlebot3_common/meshes/wheels/left_tire.stl</uri>
             <scale>0.001 0.001 0.001</scale>
           </mesh>
         </geometry>
@@ -293,7 +293,7 @@
         <pose>0.0 -0.08 0.023 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>models/turtlebot3_common/meshes/wheels/right_tire.stl</uri>
+            <uri>model://turtlebot3_common/meshes/wheels/right_tire.stl</uri>
             <scale>0.001 0.001 0.001</scale>
           </mesh>
         </geometry>
