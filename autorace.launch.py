@@ -23,9 +23,9 @@ def generate_launch_description():
         SetEnvironmentVariable('GZ_IP', '127.0.0.1'),
         
         # [for henry] Nvidia RTX 顯卡優化 (預設註解)
-        # SetEnvironmentVariable('__NV_PRIME_RENDER_OFFLOAD', '1'),
-        # SetEnvironmentVariable('__GLX_VENDOR_LIBRARY_NAME', 'nvidia'),
-        # SetEnvironmentVariable('__EGL_VENDOR_LIBRARY_FILENAMES', '/usr/share/glvnd/egl_vendor.d/10_nvidia.json'),
+        SetEnvironmentVariable('__NV_PRIME_RENDER_OFFLOAD', '1'),
+        SetEnvironmentVariable('__GLX_VENDOR_LIBRARY_NAME', 'nvidia'),
+        SetEnvironmentVariable('__EGL_VENDOR_LIBRARY_FILENAMES', '/usr/share/glvnd/egl_vendor.d/10_nvidia.json'),
 
       
         # 2. 啟動賽道 (Gazebo Harmonic)
@@ -65,12 +65,18 @@ def generate_launch_description():
                     package='ros_gz_bridge',
                     executable='parameter_bridge',
                     arguments=[
-                        '/cmd_vel@geometry_msgs/msg/Twist[gz.msgs.Twist',
-                        '/odom@nav_msgs/msg/Odometry[gz.msgs.Odometry',
-                        '/tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
-                        '/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan',
-                        '/camera/image_raw@sensor_msgs/msg/Image[gz.msgs.Image',
-                        '/camera/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo'
+                        # 攝影機影像 (雙向)
+                        '/camera/image_raw@sensor_msgs/msg/Image@gz.msgs.Image',
+                        # 攝影機資訊 (雙向)
+                        '/camera/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo',
+                        # 雷達掃描 (雙向)
+                        '/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan',
+                        # 速度控制指令 (雙向)
+                        '/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist',
+                        # 里程計 (雙向)
+                        '/odom@nav_msgs/msg/Odometry@gz.msgs.Odometry',
+                        # 座標轉換 (雙向)
+                        '/tf@tf2_msgs/msg/TFMessage@gz.msgs.Pose_V'
                     ],
                     output='screen'
                 ),
