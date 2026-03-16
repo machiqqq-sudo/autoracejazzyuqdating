@@ -157,6 +157,7 @@
           <update_rate>5</update_rate>
           <always_on>true</always_on>
           <visualize>true</visualize>
+          <gz_frame_id>base_scan</gz_frame_id>
           <ray>
             <scan>
               <horizontal>

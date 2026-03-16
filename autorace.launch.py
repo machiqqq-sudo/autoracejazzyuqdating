@@ -17,7 +17,7 @@ def generate_launch_description():
     # 讀取 SDF 檔案內容以供 robot_state_publisher 使用
     # 並將 model:// 替換為 file:// 絕對路徑，確保 RViz 能正確顯示模型
     with open(sdf_path, 'r') as f:
-        robot_desc = f.read().replace('model://', 'file://' + models_path + '/')
+        robot_desc = f.read().replace('model://', 'file:///home/jkchen525/autoracejazzyupdating/models/')
 
     return LaunchDescription([
      
@@ -102,15 +102,6 @@ def generate_launch_description():
                         '/tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V'
                     ],
                     output='screen'
-                ),
-
-                LogInfo(msg="啟動 RViz..."),
-                Node(
-                    package='rviz2',
-                    executable='rviz2',
-                    name='rviz2',
-                    output='screen',
-                    parameters=[{'use_sim_time': True}]
                 ),
                 
                 LogInfo(msg=" 準備就緒！(按 Ctrl+C 可安全關閉)")
