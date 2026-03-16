@@ -14,6 +14,10 @@ def generate_launch_description():
     sdf_path = os.path.join(current_dir, 'my_burger.sdf')
     manager_path = os.path.join(current_dir, 'autorace_manager.py')
 
+    # 讀取 SDF 檔案內容以供 robot_state_publisher 使用
+    with open(sdf_path, 'r') as f:
+        robot_desc = f.read()
+
     return LaunchDescription([
      
         # 1. 環境變數設定
@@ -58,6 +62,18 @@ def generate_launch_description():
                         '-x', '0.44', '-y', '-1.75', '-z', '0.01', '-Y', '0.0'
                     ],
                     output='screen'
+                ),
+
+                LogInfo(msg="啟動 robot_state_publisher..."),
+                Node(
+                    package='robot_state_publisher',
+                    executable='robot_state_publisher',
+                    name='robot_state_publisher',
+                    output='both',
+                    parameters=[
+                        {'use_sim_time': True},
+                        {'robot_description': robot_desc},
+                    ]
                 ),
 
                 LogInfo(msg="建立 ROS-GZ 通訊橋樑..."),
