@@ -30,7 +30,7 @@ def generate_launch_description():
         SetEnvironmentVariable('__EGL_VENDOR_LIBRARY_FILENAMES', '/usr/share/glvnd/egl_vendor.d/10_nvidia.json'),
 
         # 2. 啟動賽道 (Gazebo Harmonic)
-        LogInfo(msg="🏎️ 正在啟動賽道..."),
+        LogInfo(msg=" 正在啟動賽道..."),
         ExecuteProcess(
             cmd=['gz', 'sim', '-r', world_path],
             output='screen'
